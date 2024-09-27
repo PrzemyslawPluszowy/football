@@ -1,0 +1,14 @@
+include: package:very_good_analysis/analysis_options.6.0.0.yaml
+linter:
+  rules:
+    public_member_api_docs: false
+    sort_constructors_first: ignore
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    - "**/*.freezed.dart"
+    - "**/*.g.dart"
+    - "**/*.chopper.dart"
+    - lib/core/l10n/**

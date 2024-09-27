@@ -1,0 +1,12 @@
+{
+    "@@locale": "en",
+    "counterAppBarTitle": "Counter",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "networkError": "Network error occurred",
+    "notFoundError": "Resource not found",
+    "serverError": "Server error",
+    "unknownError": "Unknown error",
+    "genericError": "An error occurred"
+}

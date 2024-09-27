@@ -1,0 +1,12 @@
+{
+    "@@locale": "pl",
+    "counterAppBarTitle": "Licznik",
+    "@counterAppBarTitle": {
+        "description": "Tekst wyświetlany w AppBar na stronie licznika"
+    },
+    "networkError": "Wystąpił błąd sieci",
+    "notFoundError": "Nie znaleziono zasobu",
+    "serverError": "Błąd serwera",
+    "unknownError": "Nieznany błąd",
+    "genericError": "Wystąpił błąd"
+}
