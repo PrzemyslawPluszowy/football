@@ -9,18 +9,23 @@ class ApiResponseValidator {
   ///
   /// Zwraca [Either<Failure, E>] w zależności od wyniku operacji.
   ///
-  /// [apiCallFunc] to asynchroniczna funkcja wykonująca zapytanie API,
+  /// [apiCallFunc] to asynchroniczna
+  ///  funkcja wykonująca zapytanie API,
   /// zwracająca obiekt [HttpResponse<M>]. Z  pakietu Retrofit
   ///
-  /// [entityMapper] to funkcja konwertująca dane typu [M] na encje typu [E].
+  /// [entityMapper] to funkcja konwertująca
+  ///  dane typu [M] na encje typu [E].
   ///
-  /// W przypadku błędów zwraca instancję [Failure] (np. [NotFoundFailure], [ServerFailure]).
+  /// W przypadku błędów zwraca instancję [Failure]
+  /// (np. [NotFoundFailure], [ServerFailure]).
   ///
   /// Przykład użycia:
   /// ```dart
-  /// final result = await ApiResponseValidator.defaultValidateApiResponse<List<PostModel>, List<Post>>(
+  /// final result = await ApiResponseValidator.
+  /// defaultValidateApiResponse<List<PostModel>, List<Post>>(
   ///   apiCallFunc: () async => await datasource.getPosts(),
-  ///   entityMapper: (data) => data.map((model) => model.toEntity()).toList(),
+  ///   entityMapper: (data) => data.map((model) =>
+  ///   model.toEntity()).toList(),
   /// );
   /// ```
   static Future<Either<Failure, E>> defaultValidateApiResponse<M, E>({
