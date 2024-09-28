@@ -20,8 +20,7 @@ jobs:
       flutter_version: '3.24.0'
       setup: flutter pub run build_runner build --delete-conflicting-outputs
       coverage_excludes: '*.g.dart'
-      working_directory: 'examples/my_flutter_package'
-      test_recursion: true
+    
     secrets:
       ssh_key: ${{secrets.EXAMPLE_KEY}}
 
