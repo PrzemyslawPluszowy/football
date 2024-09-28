@@ -1,3 +1,4 @@
+import 'package:football/features/home/domain/entities/post_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'image_info_model.g.dart';
@@ -10,6 +11,13 @@ class ImageInfoModel {
     required this.height,
   });
 
+  ImageInfoModel.formEntity(ImageInfo entity)
+      : this(
+          url: entity.url,
+          width: entity.width,
+          height: entity.height,
+        );
+
   factory ImageInfoModel.fromJson(Map<String, dynamic> json) =>
       _$ImageInfoModelFromJson(json);
 
@@ -18,4 +26,12 @@ class ImageInfoModel {
   final int height;
 
   Map<String, dynamic> toJson() => _$ImageInfoModelToJson(this);
+
+  ImageInfo toEntity() {
+    return ImageInfo(
+      url: url,
+      width: width,
+      height: height,
+    );
+  }
 }
