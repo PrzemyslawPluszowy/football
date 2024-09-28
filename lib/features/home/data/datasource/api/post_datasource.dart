@@ -15,6 +15,6 @@ abstract class PostDatasource {
     @Query('limit') int limit,
   );
 
-  @GET('/posts/{id}')
+  @GET('/post/{id}')
   Future<HttpResponse<PostModel>> getPost(@Path('id') int id);
 }

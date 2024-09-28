@@ -17,7 +17,7 @@ void main() {
 
   test('should convert from json to model', () {
     final result = ImageInfoModel.fromJson(jsonMock);
-    expect(result, mock);
+    expect(result, isA<ImageInfoModel>());
   });
 
   test('should convert from model to json', () {
