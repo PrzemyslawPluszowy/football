@@ -13,15 +13,17 @@ on:
       - main
 
 jobs:
-  semantic-pull-request:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
-    with: 
-      setup: flutter pub run build_runner build --delete-conflicting-outputs
-
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
-      flutter_channel: stable
+      flutter_channel: 'stable'
+      flutter_version: '3.24.0'
+      setup: flutter pub run build_runner build --delete-conflicting-outputs
+      coverage_excludes: '*.g.dart'
+      working_directory: 'examples/my_flutter_package'
+      test_recursion: true
+    secrets:
+      ssh_key: ${{secrets.EXAMPLE_KEY}}
 
   spell-check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
