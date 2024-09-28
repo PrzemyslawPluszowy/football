@@ -9,6 +9,7 @@ import 'package:mocktail/mocktail.dart';
 class MockPostRepository extends Mock implements PostRepository {}
 
 const ImageInfo mockImageInfo = ImageInfo(url: '', width: 100, height: 100);
+
 void main() {
   late GetPostsUseCase getPostsUseCase;
   late MockPostRepository mockPostRepository;

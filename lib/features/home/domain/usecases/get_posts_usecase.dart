@@ -13,32 +13,7 @@ class GetPostsUseCase implements UseCase<List<Post>, PaginatedParam> {
   Future<Either<Failure, List<Post>>> call(
     PaginatedParam paginatedParam,
   ) async {
-    //To-do odkomentowac jak bedzie backend
-    // return repository.getPosts(paginatedParam.page, paginatedParam.limit);
-    return Right([
-      Post(
-        id: 1,
-        title: 'title',
-        description: 'description',
-        createdAt: DateTime.now(),
-        imageUrls: const PostImages(
-          small: ImageInfo(url: '', width: 100, height: 100),
-          medium: ImageInfo(url: '', width: 100, height: 100),
-          large: ImageInfo(url: '', width: 100, height: 100),
-        ),
-      ),
-      Post(
-        id: 2,
-        title: 'title',
-        description: 'description',
-        createdAt: DateTime.now(),
-        imageUrls: const PostImages(
-          small: ImageInfo(url: '', width: 100, height: 100),
-          medium: ImageInfo(url: '', width: 100, height: 100),
-          large: ImageInfo(url: '', width: 100, height: 100),
-        ),
-      ),
-    ]);
+    return repository.getPosts(paginatedParam.page, paginatedParam.limit);
   }
 }
 

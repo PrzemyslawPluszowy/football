@@ -10,7 +10,6 @@ import 'package:football/features/home/view/widgets/matchs/matches_list.dart';
 import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
 import 'package:football/features/home/view/widgets/post/posts_list.dart';
 import 'package:football/features/home/view/widgets/reel/reels_list.dart';
-import 'package:football/main_development.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -24,7 +23,6 @@ class HomeScreen extends StatelessWidget {
       if (_scrollController.offset >=
               _scrollController.position.maxScrollExtent - 400 &&
           !_scrollController.position.outOfRange) {
-        talker.debug('run');
         context.read<PostListCubit>().getPosts();
       }
     });

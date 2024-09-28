@@ -20,6 +20,7 @@ final Post mockPost = Post(
   ),
   title: 'title',
 );
+
 void main() {
   late MockPostRepository mockPostRepository;
   late GetPostUseCase getPostsUseCase;

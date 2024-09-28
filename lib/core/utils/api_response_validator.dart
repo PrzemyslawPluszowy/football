@@ -1,7 +1,7 @@
 import 'package:football/core/failures/failure.dart';
-import 'package:football/main_development.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 /// Klasa pomocnicza do walidacji odpowiedzi API.
 class ApiResponseValidator {
@@ -43,7 +43,7 @@ class ApiResponseValidator {
         return Left(ServerFailure(e: '500'));
       }
     } catch (e, s) {
-      talker.error(e, s);
+      Talker().error(e, s);
       return Left(UnknownFailure());
     }
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football/l10n/l10n.dart';
-import 'package:football/main_development.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 sealed class Failure {
   Failure({this.e, this.s});
@@ -10,25 +10,25 @@ sealed class Failure {
 
 class NetworkFailure extends Failure {
   NetworkFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
-    talker.warning(e, s);
+    Talker().warning(e, s);
   }
 }
 
 class NotFoundFailure extends Failure {
   NotFoundFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
-    talker.warning(e, s);
+    Talker().warning(e, s);
   }
 }
 
 class ServerFailure extends Failure {
   ServerFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
-    talker.warning(e, s);
+    Talker().error(e, s);
   }
 }
 
 class UnknownFailure extends Failure {
   UnknownFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
-    talker.error(e, s);
+    Talker().error(e, s);
   }
 }
 
