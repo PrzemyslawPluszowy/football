@@ -17,6 +17,7 @@ class PostRepositoryImpl implements PostRepository {
     );
   }
 
+  @override
   Future<Either<Failure, List<Post>>> getPosts(int page, int limit) async {
     return ApiResponseValidator.defaultValidateApiResponse(
       apiCallFunc: () => datasource.getPosts(page, limit),

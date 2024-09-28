@@ -9,6 +9,7 @@ class GetPostUseCase implements UseCase<Post, int> {
 
   final PostRepository repository;
 
+  @override
   Future<Either<Failure, Post>> call(int id) async {
     return repository.getPost(id);
   }

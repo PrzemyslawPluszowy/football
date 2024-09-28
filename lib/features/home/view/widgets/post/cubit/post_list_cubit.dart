@@ -10,16 +10,16 @@ part 'post_list_state.dart';
 class PostListCubit extends Cubit<PostListState> {
   PostListCubit({
     required this.getPostsUseCase,
-  }) : super(PostListState.initial());
+  }) : super(const PostListState.initial());
 
   final GetPostsUseCase getPostsUseCase;
-  var page = 1;
+  int page = 1;
   static const limit = 30;
 
   Future<void> getPosts() async {
     if (!_canFetchPosts()) return;
     if (state is _Initial) {
-      emit(PostListState.loading());
+      emit(const PostListState.loading());
     } else {
       final currentState = state as _ShowList;
       emit(currentState.copyWith(isFetching: true));
@@ -28,7 +28,7 @@ class PostListCubit extends Cubit<PostListState> {
         await getPostsUseCase.call(PaginatedParam(page: page, limit: limit));
     result.fold(
       (failure) => emit(PostListState.error(failure)),
-      (posts) => _handlePostsResponse(posts),
+      _handlePostsResponse,
     );
   }
 
@@ -48,25 +48,36 @@ class PostListCubit extends Cubit<PostListState> {
     );
 
     if (newPosts.isEmpty) {
-      emit(PostListState.showList(
-          posts: oldPosts, hasReachedMax: true, isFetching: false));
+      emit(
+        PostListState.showList(
+          posts: oldPosts,
+          hasReachedMax: true,
+          isFetching: false,
+        ),
+      );
     } else if (newPosts.length < limit) {
-      emit(PostListState.showList(
+      emit(
+        PostListState.showList(
           posts: [...oldPosts, ...newPosts],
           hasReachedMax: true,
-          isFetching: false));
+          isFetching: false,
+        ),
+      );
     } else {
       page++;
-      emit(PostListState.showList(
+      emit(
+        PostListState.showList(
           posts: [...oldPosts, ...newPosts],
           hasReachedMax: false,
-          isFetching: false));
+          isFetching: false,
+        ),
+      );
     }
   }
 
   Future<void> refreshPosts() async {
     page = 1;
-    emit(PostListState.initial());
+    emit(const PostListState.initial());
     await getPosts();
   }
 }

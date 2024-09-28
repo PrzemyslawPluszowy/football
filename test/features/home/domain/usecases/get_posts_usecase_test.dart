@@ -8,7 +8,7 @@ import 'package:mocktail/mocktail.dart';
 
 class MockPostRepository extends Mock implements PostRepository {}
 
-final ImageInfo mockImageInfo = ImageInfo(url: '', width: 100, height: 100);
+const ImageInfo mockImageInfo = ImageInfo(url: '', width: 100, height: 100);
 void main() {
   late GetPostsUseCase getPostsUseCase;
   late MockPostRepository mockPostRepository;
@@ -20,15 +20,16 @@ void main() {
 
   final mockPostList = <Post>[
     Post(
-        createdAt: DateTime(2024),
-        id: 0,
-        description: '',
-        imageUrls: PostImages(
-          large: mockImageInfo,
-          medium: mockImageInfo,
-          small: mockImageInfo,
-        ),
-        title: 'title')
+      createdAt: DateTime(2024),
+      id: 0,
+      description: '',
+      imageUrls: const PostImages(
+        large: mockImageInfo,
+        medium: mockImageInfo,
+        small: mockImageInfo,
+      ),
+      title: 'title',
+    ),
   ];
 
   test('should get posts from the repository', () async {

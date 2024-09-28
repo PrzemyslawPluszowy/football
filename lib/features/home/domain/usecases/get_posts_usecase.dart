@@ -2,16 +2,18 @@ import 'package:football/core/failures/failure.dart';
 import 'package:football/core/utils/usecase.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 import 'package:football/features/home/domain/repositories/post_repository.dart';
-import 'package:fpdart/src/either.dart';
+import 'package:fpdart/fpdart.dart';
 
 class GetPostsUseCase implements UseCase<List<Post>, PaginatedParam> {
   const GetPostsUseCase({required this.repository});
 
   final PostRepository repository;
 
+  @override
   Future<Either<Failure, List<Post>>> call(
-      PaginatedParam paginatedParam) async {
-    //TODO odkomentowac jak bedzie backend
+    PaginatedParam paginatedParam,
+  ) async {
+    //To-do odkomentowac jak bedzie backend
     // return repository.getPosts(paginatedParam.page, paginatedParam.limit);
     return Right([
       Post(
@@ -19,7 +21,7 @@ class GetPostsUseCase implements UseCase<List<Post>, PaginatedParam> {
         title: 'title',
         description: 'description',
         createdAt: DateTime.now(),
-        imageUrls: PostImages(
+        imageUrls: const PostImages(
           small: ImageInfo(url: '', width: 100, height: 100),
           medium: ImageInfo(url: '', width: 100, height: 100),
           large: ImageInfo(url: '', width: 100, height: 100),
@@ -30,7 +32,7 @@ class GetPostsUseCase implements UseCase<List<Post>, PaginatedParam> {
         title: 'title',
         description: 'description',
         createdAt: DateTime.now(),
-        imageUrls: PostImages(
+        imageUrls: const PostImages(
           small: ImageInfo(url: '', width: 100, height: 100),
           medium: ImageInfo(url: '', width: 100, height: 100),
           large: ImageInfo(url: '', width: 100, height: 100),

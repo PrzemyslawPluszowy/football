@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football/common/widgets/custom_error_widget.dart';
 import 'package:football/core/extensions/string_hc.dart';
 import 'package:football/core/theme/app_sizes.dart';
-import 'package:football/features/home/domain/entities/post_entity.dart';
+import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
 import 'package:football/features/home/view/widgets/post/post_item.dart';
-
-import 'cubit/post_list_cubit.dart';
 
 class PostsList extends StatelessWidget {
   const PostsList({
@@ -18,10 +16,12 @@ class PostsList extends StatelessWidget {
     return BlocBuilder<PostListCubit, PostListState>(
       builder: (context, state) {
         return state.when(
-          initial: () => SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator.adaptive())),
-          loading: () => SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator.adaptive())),
+          initial: () => const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator.adaptive()),
+          ),
+          loading: () => const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator.adaptive()),
+          ),
           error: (message) =>
               SliverToBoxAdapter(child: CustomErrorWidget(message: message)),
           showList: (posts, hasReachedMax, isFetchingMore) =>
@@ -32,7 +32,7 @@ class PostsList extends StatelessWidget {
               if (index == posts.length) {
                 // Jeśli trwa pobieranie kolejnych postów
                 if (isFetchingMore && !hasReachedMax) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator.adaptive(),
                   );
                 }
@@ -45,15 +45,16 @@ class PostsList extends StatelessWidget {
                   );
                 }
               }
-              final Post post = posts[index];
+              final post = posts[index];
 
               return PostItem(
-                  title: post.title,
-                  description: post.description,
-                  imageUrl: post.imageUrls.medium.url,
-                  createdAt: post.createdAt,
-                  imageHeight: post.imageUrls.medium.height,
-                  imageWidth: post.imageUrls.medium.width);
+                title: post.title,
+                description: post.description,
+                imageUrl: post.imageUrls.medium.url,
+                createdAt: post.createdAt,
+                imageHeight: post.imageUrls.medium.height,
+                imageWidth: post.imageUrls.medium.width,
+              );
             },
           ),
         );

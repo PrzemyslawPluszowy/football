@@ -9,7 +9,7 @@ import 'package:get_it/get_it.dart';
 GetIt getIt = GetIt.instance;
 
 void setupLocator() {
-  getIt.registerLazySingleton(() => Dio());
+  getIt.registerLazySingleton(Dio.new);
   _post();
 }
 
@@ -17,7 +17,8 @@ void _post() {
   getIt
     ..registerLazySingleton(() => PostDatasource(getIt.call()))
     ..registerLazySingleton<PostRepository>(
-        () => PostRepositoryImpl(datasource: getIt.call()))
+      () => PostRepositoryImpl(datasource: getIt.call()),
+    )
     ..registerLazySingleton(() => GetPostsUseCase(repository: getIt.call()))
     ..registerLazySingleton(() => PostListCubit(getPostsUseCase: getIt.call()));
 }

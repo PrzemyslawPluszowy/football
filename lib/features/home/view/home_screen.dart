@@ -36,10 +36,10 @@ class HomeScreen extends StatelessWidget {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          context.read<PostListCubit>().refreshPosts();
+          await context.read<PostListCubit>().refreshPosts();
         },
         child: CustomScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           controller: _scrollController,
           slivers: [
             SliverToBoxAdapter(
