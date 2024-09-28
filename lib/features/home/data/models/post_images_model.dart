@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'post_images_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class PostImagesModel {
   const PostImagesModel({
     required this.large,
