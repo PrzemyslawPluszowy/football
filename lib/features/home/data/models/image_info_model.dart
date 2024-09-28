@@ -11,12 +11,13 @@ class ImageInfoModel {
     required this.height,
   });
 
-  ImageInfoModel.formEntity(ImageInfo entity)
-      : this(
-          url: entity.url,
-          width: entity.width,
-          height: entity.height,
-        );
+  factory ImageInfoModel.fromEntity(ImageInfo entity) {
+    return ImageInfoModel(
+      url: entity.url,
+      width: entity.width,
+      height: entity.height,
+    );
+  }
 
   factory ImageInfoModel.fromJson(Map<String, dynamic> json) =>
       _$ImageInfoModelFromJson(json);

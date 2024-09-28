@@ -3,41 +3,62 @@ import 'package:football/features/home/data/models/image_info_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 
 void main() {
-  const mock = ImageInfoModel(
+  // Mockowe dane ImageInfoModel
+  const imageInfoMock = ImageInfoModel(
     url: 'url',
     width: 100,
     height: 100,
   );
 
-  final jsonMock = {
+  // Mockowe dane w formacie JSON
+  final imageInfoJsonMock = {
     'url': 'url',
     'width': 100,
     'height': 100,
   };
 
-  test('should convert from json to model', () {
-    final result = ImageInfoModel.fromJson(jsonMock);
-    expect(result, isA<ImageInfoModel>());
-  });
+  group('ImageInfoModel', () {
+    test('should convert from json to model', () {
+      // Konwersja z JSON na model
+      final result = ImageInfoModel.fromJson(imageInfoJsonMock);
 
-  test('should convert from model to json', () {
-    final result = mock.toJson();
-    expect(result, jsonMock);
-  });
+      // Sprawdzenie poprawności konwersji
+      expect(result, isA<ImageInfoModel>());
+      expect(result.url, 'url');
+      expect(result.width, 100);
+      expect(result.height, 100);
+    });
 
-  test('should convert  to Entity ', () {
-    final result = mock.toEntity();
-    expect(result, isA<ImageInfo>());
-    expect(result, const ImageInfo(url: 'url', width: 100, height: 100));
-  });
+    test('should convert from model to json', () {
+      // Konwersja z modelu na JSON
+      final result = imageInfoMock.toJson();
 
-  test('should convert from entity to model', () {
-    final result = ImageInfoModel.formEntity(
-      const ImageInfo(url: 'url', width: 100, height: 100),
-    );
-    expect(result.height == 100, true);
-    expect(result.url == 'url', true);
-    expect(result.width == 100, true);
-    expect(result, isA<ImageInfoModel>());
+      // Sprawdzenie poprawności konwersji
+      expect(result, imageInfoJsonMock);
+    });
+
+    test('should convert from model to entity', () {
+      // Konwersja z modelu na encję
+      final result = imageInfoMock.toEntity();
+
+      // Sprawdzenie poprawności konwersji
+      expect(result, isA<ImageInfo>());
+      expect(result.url, 'url');
+      expect(result.width, 100);
+      expect(result.height, 100);
+    });
+
+    test('should convert from entity to model', () {
+      // Konwersja z encji na model
+      final result = ImageInfoModel.fromEntity(
+        const ImageInfo(url: 'url', width: 100, height: 100),
+      );
+
+      // Sprawdzenie poprawności konwersji
+      expect(result, isA<ImageInfoModel>());
+      expect(result.url, 'url');
+      expect(result.width, 100);
+      expect(result.height, 100);
+    });
   });
 }

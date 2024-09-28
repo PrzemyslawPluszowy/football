@@ -100,4 +100,41 @@ void main() {
       ),
     );
   });
+  group('PostImagesModel', () {
+    test('should convert from entity to PostImagesModel', () {
+      // Mockowe dane encji PostImages
+      const postImagesEntity = PostImages(
+        large: ImageInfo(url: '', width: 100, height: 100),
+        medium: ImageInfo(url: '', width: 100, height: 100),
+        small: ImageInfo(url: '', width: 100, height: 100),
+      );
+
+      // Konwersja encji na model
+      final postImagesModel = PostImagesModel.fromEntity(postImagesEntity);
+
+      // Sprawdzenie poprawności konwersji
+      expect(postImagesModel, isA<PostImagesModel>());
+      expect(postImagesModel.large.width, 100);
+      expect(postImagesModel.medium.width, 100);
+      expect(postImagesModel.small.width, 100);
+    });
+
+    test('should convert from PostImagesModel to json', () {
+      // Mockowe dane modelu PostImagesModel
+      const postImagesModel = PostImagesModel(
+        large: ImageInfoModel(url: '', width: 100, height: 100),
+        medium: ImageInfoModel(url: '', width: 100, height: 100),
+        small: ImageInfoModel(url: '', width: 100, height: 100),
+      );
+
+      // Konwersja modelu na JSON
+      final json = postImagesModel.toJson();
+
+      // Sprawdzenie poprawności konwersji
+      expect(json['large'], isA<Map<String, dynamic>>());
+      expect(json['large']['width'], 100);
+      expect(json['medium']['width'], 100);
+      expect(json['small']['width'], 100);
+    });
+  });
 }
