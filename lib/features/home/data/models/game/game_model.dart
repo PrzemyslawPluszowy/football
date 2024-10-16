@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:football/core/utils/date_time_converter.dart';
+import 'package:football/features/home/domain/entities/game_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'game_model.g.dart';
@@ -28,6 +29,17 @@ class GameModel extends Equatable {
 
   Map<String, dynamic> toJson() => _$GameModelToJson(this);
 
+  Game toEntity() {
+    return Game(
+      id: id,
+      date: date,
+      score: score,
+      homeClub: homeClub.toEntity(),
+      awayClub: awayClub.toEntity(),
+      createdAt: createdAt,
+    );
+  }
+
   @override
   List<Object?> get props => [id];
 }
@@ -40,9 +52,22 @@ class ClubModel extends Equatable {
     required this.stadium,
   });
 
+  factory ClubModel.fromJson(Map<String, dynamic> json) =>
+      _$ClubModelFromJson(json);
+
   final int id;
   final String name;
   final String stadium;
+
+  Map<String, dynamic> toJson() => _$ClubModelToJson(this);
+
+  Club toEntity() {
+    return Club(
+      id: id,
+      name: name,
+      stadium: stadium,
+    );
+  }
 
   @override
   List<Object?> get props => [id];

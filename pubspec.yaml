@@ -28,6 +28,7 @@ dependencies:
   json_serializable: ^6.8.0
   loading_indicator: ^3.1.1
   lottie: ^3.1.2
+  pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
   talker_dio_logger: ^4.4.1
   talker_flutter: ^4.4.1

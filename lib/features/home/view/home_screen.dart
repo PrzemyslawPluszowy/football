@@ -6,6 +6,7 @@ import 'package:football/core/extensions/string_hc.dart';
 import 'package:football/core/theme/app_sizes.dart';
 import 'package:football/core/theme/custom_colors.dart';
 import 'package:football/features/home/view/widgets/label.dart';
+import 'package:football/features/home/view/widgets/matchs/cubit/games_cubit.dart';
 import 'package:football/features/home/view/widgets/matchs/matches_list.dart';
 import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
 import 'package:football/features/home/view/widgets/post/posts_list.dart';
@@ -16,6 +17,11 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final ScrollController _scrollController = ScrollController();
+
+  Future<void> _onRefresh(BuildContext context) async {
+    await context.read<PostListCubit>().refreshPosts();
+    if (context.mounted) await context.read<GamesCubit>().getGames();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +40,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          await context.read<PostListCubit>().refreshPosts();
+          await _onRefresh(context);
         },
         child: CustomScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
