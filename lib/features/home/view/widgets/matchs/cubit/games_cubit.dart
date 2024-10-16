@@ -16,8 +16,7 @@ class GamesCubit extends Cubit<GamesState> {
 
   ///At this moment this function don't use pagination logic,
   /// only show last 5 games
-  static const PaginatedParam paginatedParam =
-      PaginatedParam(page: 1, limit: 5);
+  static const PaginatedParam paginatedParam = PaginatedParam(page: 1, limit: 5);
 
   Future<void> getGames() async {
     emit(const GamesState.loading());

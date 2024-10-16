@@ -19,15 +19,12 @@ class PostModel {
       id: entity.id,
       title: entity.title,
       description: entity.description,
-      imageUrls: entity.imageUrls == null
-          ? null
-          : PostImagesModel.fromEntity(entity.imageUrls!),
+      imageUrls: entity.imageUrls == null ? null : PostImagesModel.fromEntity(entity.imageUrls!),
       createdAt: entity.createdAt,
     );
   }
 
-  factory PostModel.fromJson(Map<String, dynamic> json) =>
-      _$PostModelFromJson(json);
+  factory PostModel.fromJson(Map<String, dynamic> json) => _$PostModelFromJson(json);
 
   final int id;
   final String title;

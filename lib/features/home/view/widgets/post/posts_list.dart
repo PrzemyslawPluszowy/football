@@ -23,10 +23,8 @@ class PostsList extends StatelessWidget {
           loading: () => const SliverToBoxAdapter(
             child: ShimmerLoadingContainer(height: 400),
           ),
-          error: (message) =>
-              SliverToBoxAdapter(child: CustomErrorWidget(message: message)),
-          showList: (posts, hasReachedMax, isFetchingMore) =>
-              SliverList.separated(
+          error: (message) => SliverToBoxAdapter(child: CustomErrorWidget(message: message)),
+          showList: (posts, hasReachedMax, isFetchingMore) => SliverList.separated(
             separatorBuilder: (context, index) => gapH12,
             itemCount: posts.length + (hasReachedMax || isFetchingMore ? 1 : 0),
             itemBuilder: (context, index) {

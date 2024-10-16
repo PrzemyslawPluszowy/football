@@ -24,8 +24,7 @@ class PostListCubit extends Cubit<PostListState> {
       final currentState = state as _ShowList;
       emit(currentState.copyWith(isFetching: true));
     }
-    final result =
-        await getPostsUseCase.call(PaginatedParam(page: page, limit: limit));
+    final result = await getPostsUseCase.call(PaginatedParam(page: page, limit: limit));
     result.fold(
       (failure) => emit(PostListState.error(failure)),
       _handlePostsResponse,

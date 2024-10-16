@@ -14,8 +14,7 @@ class Label extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: Sizes.p12, vertical: Sizes.p8),
+      padding: const EdgeInsets.symmetric(horizontal: Sizes.p12, vertical: Sizes.p8),
       child: Text(
         text.hardcoded,
         style: context.textTheme.titleLarge?.copyWith(

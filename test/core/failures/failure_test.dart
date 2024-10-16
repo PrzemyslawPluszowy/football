@@ -25,10 +25,8 @@ void main() {
     });
 
     test('UnknownFailure instances with same values should be equal', () {
-      final failure1 =
-          UnknownFailure(e: 'Unknown Error', s: StackTrace.current);
-      final failure2 =
-          UnknownFailure(e: 'Unknown Error', s: StackTrace.current);
+      final failure1 = UnknownFailure(e: 'Unknown Error', s: StackTrace.current);
+      final failure2 = UnknownFailure(e: 'Unknown Error', s: StackTrace.current);
 
       expect(failure1, equals(failure2));
     });

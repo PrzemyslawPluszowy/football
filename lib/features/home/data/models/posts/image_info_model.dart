@@ -19,8 +19,7 @@ class ImageInfoModel {
     );
   }
 
-  factory ImageInfoModel.fromJson(Map<String, dynamic> json) =>
-      _$ImageInfoModelFromJson(json);
+  factory ImageInfoModel.fromJson(Map<String, dynamic> json) => _$ImageInfoModelFromJson(json);
 
   final String url;
   final int width;

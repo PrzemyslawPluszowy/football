@@ -16,8 +16,7 @@ class GameModel extends Equatable {
     this.score,
   });
 
-  factory GameModel.fromJson(Map<String, dynamic> json) =>
-      _$GameModelFromJson(json);
+  factory GameModel.fromJson(Map<String, dynamic> json) => _$GameModelFromJson(json);
 
   final int id;
   final DateTime date;
@@ -52,8 +51,7 @@ class ClubModel extends Equatable {
     required this.stadium,
   });
 
-  factory ClubModel.fromJson(Map<String, dynamic> json) =>
-      _$ClubModelFromJson(json);
+  factory ClubModel.fromJson(Map<String, dynamic> json) => _$ClubModelFromJson(json);
 
   final int id;
   final String name;
