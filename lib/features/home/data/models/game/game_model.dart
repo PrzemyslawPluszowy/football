@@ -10,10 +10,10 @@ class GameModel extends Equatable {
   const GameModel({
     required this.id,
     required this.date,
-    required this.score,
     required this.homeClub,
     required this.awayClub,
     required this.createdAt,
+    this.score,
   });
 
   factory GameModel.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +21,7 @@ class GameModel extends Equatable {
 
   final int id;
   final DateTime date;
-  final String score;
+  final String? score;
   final ClubModel homeClub;
   final ClubModel awayClub;
   @DataTimaIsoConverter()

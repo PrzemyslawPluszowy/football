@@ -11,8 +11,8 @@ class GamesRepositoryImpl implements GameRepository {
 
   @override
   Future<Either<Failure, List<Game>>> getGames(
-    int perPage,
     int page,
+    int perPage,
   ) async {
     return ApiResponseValidator.defaultValidateApiResponse(
       apiCallFunc: () => datasource.getGames(page, perPage),

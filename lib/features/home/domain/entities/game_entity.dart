@@ -7,7 +7,7 @@ class Game with _$Game {
   const factory Game({
     required int id,
     required DateTime date,
-    required String score,
+    required String? score,
     required Club homeClub,
     required Club awayClub,
     required DateTime createdAt,

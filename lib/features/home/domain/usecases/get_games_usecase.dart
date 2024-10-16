@@ -19,4 +19,9 @@ class PaginatedParam {
 
   final int page;
   final int limit;
+
+  @override
+  String toString() {
+    return 'PaginatedParam(page: $page, limit: $limit)';
+  }
 }
