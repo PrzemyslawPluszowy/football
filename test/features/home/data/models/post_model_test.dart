@@ -1,9 +1,9 @@
 // ignore_for_file: avoid_dynamic_calls
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:football/features/home/data/models/image_info_model.dart';
-import 'package:football/features/home/data/models/post_images_model.dart';
-import 'package:football/features/home/data/models/post_model.dart';
+import 'package:football/features/home/data/models/posts/image_info_model.dart';
+import 'package:football/features/home/data/models/posts/post_images_model.dart';
+import 'package:football/features/home/data/models/posts/post_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 
 final mockJson = {
@@ -82,7 +82,7 @@ void main() {
     expect(postModel.id, 1);
     expect(postModel.title, 'title');
     expect(postModel.description, 'description');
-    expect(postModel.imageUrls.large.width, 100);
+    expect(postModel.imageUrls!.large.width, 100);
     expect(postModel.createdAt.year, 2024);
   });
 
@@ -120,7 +120,7 @@ void main() {
     expect(postModel.id, 1);
     expect(postModel.title, 'title');
     expect(postModel.description, 'description');
-    expect(postModel.imageUrls.large.width, 100);
+    expect(postModel.imageUrls!.large.width, 100);
     expect(postModel.createdAt.year, 2024);
   });
 
@@ -156,7 +156,7 @@ void main() {
 
     expect(json['image_urls'], isA<Map<String, dynamic>>());
 
-    expect(json['image_urls'], testPostMode.imageUrls.toJson());
+    expect(json['image_urls'], testPostMode.imageUrls!.toJson());
 
     expect(json['created_at'], '2024-01-01T00:00:00.000');
   });

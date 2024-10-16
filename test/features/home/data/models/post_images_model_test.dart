@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_dynamic_calls
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:football/features/home/data/models/image_info_model.dart';
-import 'package:football/features/home/data/models/post_images_model.dart';
+import 'package:football/features/home/data/models/posts/image_info_model.dart';
+import 'package:football/features/home/data/models/posts/post_images_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 
 void main() {

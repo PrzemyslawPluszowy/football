@@ -18,16 +18,19 @@ class PostItem extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     super.key,
   });
-  final int imageHeight;
-  final int imageWidth;
+  final int? imageHeight;
+  final int? imageWidth;
   final DateTime createdAt;
   final String description;
   final String title;
-  final String imageUrl;
+  final String? imageUrl;
   final String? videoUrl;
   final EdgeInsets margin;
 
-  double _heightOfContainer(int imageHeight, int imageWidth) {
+  double _heightOfContainer(int? imageHeight, int? imageWidth) {
+    if (imageHeight == null || imageWidth == null) {
+      return 300;
+    }
     return imageHeight >= imageWidth ? 500 : 300;
   }
 
@@ -91,13 +94,13 @@ class PostItem extends StatelessWidget {
 
   CashedImage _image() {
     return CashedImage(
-      width: imageWidth,
-      height: imageHeight,
+      width: imageWidth ?? 0,
+      height: imageHeight ?? 0,
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(Sizes.p12),
         topRight: Radius.circular(Sizes.p12),
       ),
-      imageUrl: imageUrl,
+      imageUrl: imageUrl ?? '',
     );
   }
 }

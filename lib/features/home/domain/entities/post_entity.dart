@@ -8,7 +8,7 @@ class Post with _$Post {
     required int id,
     required String title,
     required String description,
-    required PostImages imageUrls,
+    required PostImages? imageUrls,
     required DateTime createdAt,
   }) = _PostEntity;
 }

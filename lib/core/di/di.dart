@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:football/features/home/data/datasource/api/game_datasource.dart';
 import 'package:football/features/home/data/datasource/api/post_datasource.dart';
+import 'package:football/features/home/data/repository/games_repository_impl.dart';
 import 'package:football/features/home/data/repository/post_repository_impl.dart';
+import 'package:football/features/home/domain/repositories/game_repository.dart';
 import 'package:football/features/home/domain/repositories/post_repository.dart';
+import 'package:football/features/home/domain/usecases/get_games_usecase.dart';
 import 'package:football/features/home/domain/usecases/get_posts_usecase.dart';
+import 'package:football/features/home/view/widgets/matchs/cubit/games_cubit.dart';
 import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
-import 'package:football/main_development.dart';
 import 'package:get_it/get_it.dart';
-import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
-import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -18,16 +21,26 @@ void setupLocator() {
     ),
   );
   dio.interceptors.add(
-    TalkerDioLogger(
-      talker: talker,
-      settings: const TalkerDioLoggerSettings(
-        printRequestHeaders: true,
-        printResponseHeaders: true,
-      ),
+    PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
     ),
   );
   getIt.registerLazySingleton<Dio>(() => dio);
   _post();
+  _games();
+}
+
+void _games() {
+  getIt
+    ..registerLazySingleton(() => GameDatasource(getIt.call()))
+    ..registerLazySingleton<GameRepository>(
+      () => GamesRepositoryImpl(datasource: getIt.call()),
+    )
+    ..registerLazySingleton(() => GetGamesUsecase(getIt.call()))
+    ..registerLazySingleton(
+      () => GamesCubit(getGamesUsecase: getIt.call()),
+    );
 }
 
 void _post() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:football/common/widgets/custom_error_widget.dart';
+import 'package:football/common/widgets/shimmer_loading_container.dart';
 import 'package:football/core/extensions/string_hc.dart';
 import 'package:football/core/theme/app_sizes.dart';
 import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
@@ -17,10 +18,10 @@ class PostsList extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator.adaptive()),
+            child: ShimmerLoadingContainer(height: 400),
           ),
           loading: () => const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator.adaptive()),
+            child: ShimmerLoadingContainer(height: 400),
           ),
           error: (message) =>
               SliverToBoxAdapter(child: CustomErrorWidget(message: message)),
@@ -50,10 +51,10 @@ class PostsList extends StatelessWidget {
               return PostItem(
                 title: post.title,
                 description: post.description,
-                imageUrl: post.imageUrls.medium.url,
+                imageUrl: post.imageUrls?.medium.url,
                 createdAt: post.createdAt,
-                imageHeight: post.imageUrls.medium.height,
-                imageWidth: post.imageUrls.medium.width,
+                imageHeight: post.imageUrls?.medium.height,
+                imageWidth: post.imageUrls?.medium.width,
               );
             },
           ),

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:football/l10n/l10n.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -8,28 +9,48 @@ sealed class Failure {
   final StackTrace? s;
 }
 
-class NetworkFailure extends Failure {
+class NetworkFailure extends Failure with EquatableMixin {
   NetworkFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
     Talker().warning(e, s);
   }
+  @override
+  List<Object?> get props => [e];
+  @override
+  bool? get stringify => true;
 }
 
-class NotFoundFailure extends Failure {
+class NotFoundFailure extends Failure with EquatableMixin {
   NotFoundFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
     Talker().warning(e, s);
   }
+
+  @override
+  List<Object?> get props => [e];
+
+  @override
+  bool? get stringify => true;
 }
 
-class ServerFailure extends Failure {
+class ServerFailure extends Failure with EquatableMixin {
   ServerFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
     Talker().error(e, s);
   }
+  @override
+  List<Object?> get props => [e];
+
+  @override
+  bool? get stringify => true;
 }
 
-class UnknownFailure extends Failure {
+class UnknownFailure extends Failure with EquatableMixin {
   UnknownFailure({String? e, StackTrace? s}) : super(e: e, s: s) {
     Talker().error(e, s);
   }
+
+  @override
+  List<Object?> get props => [e];
+  @override
+  bool? get stringify => true;
 }
 
 class FailureTranslate {
