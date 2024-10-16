@@ -30,8 +30,8 @@ class BootomNavigationRoute extends PageRouteInfo<BootomNavigationRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<BootomNavigationRouteArgs>(
-          orElse: () => const BootomNavigationRouteArgs());
+      final args =
+          data.argsAs<BootomNavigationRouteArgs>(orElse: () => const BootomNavigationRouteArgs());
       return BootomNavigationScreen(
         key: args.key,
         appBar: args.appBar,
@@ -73,8 +73,7 @@ class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      final args = data.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return HomeScreen(key: args.key);
     },
   );

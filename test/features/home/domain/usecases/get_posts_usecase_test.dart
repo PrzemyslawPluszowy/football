@@ -34,17 +34,14 @@ void main() {
   ];
 
   test('should get posts from the repository', () async {
-    when(() => mockPostRepository.getPosts(1, 10))
-        .thenAnswer((_) async => Right(mockPostList));
+    when(() => mockPostRepository.getPosts(1, 10)).thenAnswer((_) async => Right(mockPostList));
     final result = await getPostsUseCase(PaginatedParam(page: 1, limit: 10));
     expect(result, Right<Failure, List<Post>>(mockPostList));
   });
 
-  test('should return failure when getting posts from the repository fails',
-      () async {
+  test('should return failure when getting posts from the repository fails', () async {
     final failure = ServerFailure();
-    when(() => mockPostRepository.getPosts(1, 10))
-        .thenAnswer((_) async => Left(failure));
+    when(() => mockPostRepository.getPosts(1, 10)).thenAnswer((_) async => Left(failure));
     final result = await getPostsUseCase(PaginatedParam(page: 1, limit: 10));
     expect(result, Left<Failure, List<Post>>(failure));
   });

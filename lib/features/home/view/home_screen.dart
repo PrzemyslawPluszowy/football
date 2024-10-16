@@ -26,8 +26,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _scrollController.addListener(() {
-      if (_scrollController.offset >=
-              _scrollController.position.maxScrollExtent - 400 &&
+      if (_scrollController.offset >= _scrollController.position.maxScrollExtent - 400 &&
           !_scrollController.position.outOfRange) {
         context.read<PostListCubit>().getPosts();
       }
@@ -49,8 +48,7 @@ class HomeScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Container(
                 margin: const EdgeInsets.only(bottom: Sizes.p8),
-                color: context.customColors?.background?.withOpacity(0.2) ??
-                    Colors.white,
+                color: context.customColors?.background?.withOpacity(0.2) ?? Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -67,8 +65,7 @@ class HomeScreen extends StatelessWidget {
             SliverToBoxAdapter(
               child: Container(
                 margin: const EdgeInsets.only(top: Sizes.p8),
-                color: context.customColors?.background?.withOpacity(0.5) ??
-                    Colors.white,
+                color: context.customColors?.background?.withOpacity(0.5) ?? Colors.white,
                 child: Label(text: "What's new?".hardcoded),
               ),
             ),

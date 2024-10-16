@@ -12,8 +12,7 @@ class PostImagesModel {
     required this.small,
   });
 
-  factory PostImagesModel.fromJson(Map<String, dynamic> json) =>
-      _$PostImagesModelFromJson(json);
+  factory PostImagesModel.fromJson(Map<String, dynamic> json) => _$PostImagesModelFromJson(json);
 
   factory PostImagesModel.fromEntity(PostImages entity) {
     return PostImagesModel(

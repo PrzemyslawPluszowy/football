@@ -31,16 +31,14 @@ void main() {
   });
 
   test('should get post from the repository', () async {
-    when(() => mockPostRepository.getPost(1))
-        .thenAnswer((_) async => Right(mockPost));
+    when(() => mockPostRepository.getPost(1)).thenAnswer((_) async => Right(mockPost));
     final result = await getPostsUseCase(1);
     expect(result, Right<Failure, Post>(mockPost));
   });
 
   test('show be return serverError', () async {
     final failure = ServerFailure();
-    when(() => mockPostRepository.getPost(1))
-        .thenAnswer((_) async => Left(failure));
+    when(() => mockPostRepository.getPost(1)).thenAnswer((_) async => Left(failure));
     final result = await getPostsUseCase(1);
     expect(result, Left<Failure, Post>(failure));
   });

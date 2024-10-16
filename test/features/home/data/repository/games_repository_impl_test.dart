@@ -51,8 +51,7 @@ void main() {
     expect(result, isA<Right<Failure, List<Game>>>());
   });
 
-  test('should return failure when getting games from the datasource fails',
-      () async {
+  test('should return failure when getting games from the datasource fails', () async {
     final failure = UnknownFailure();
     when(() => mockDataSource.getGames(1, 5)).thenThrow(failure);
     final result = await gamesRepositoryImpl.getGames(1, 5);

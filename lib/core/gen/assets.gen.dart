@@ -14,8 +14,7 @@ class $AssetsLottieGen {
   const $AssetsLottieGen();
 
   /// File path: assets/lottie/err_cat.json
-  LottieGenImage get errCat =>
-      const LottieGenImage('assets/lottie/err_cat.json');
+  LottieGenImage get errCat => const LottieGenImage('assets/lottie/err_cat.json');
 
   /// List of all assets
   List<LottieGenImage> get values => [errCat];

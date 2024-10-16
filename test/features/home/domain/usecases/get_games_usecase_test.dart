@@ -37,20 +37,15 @@ void main() {
   });
 
   test('should get games from the repository', () async {
-    when(() => mockGameRepository.getGames(1, 5))
-        .thenAnswer((_) async => Right(mockGameList));
-    final result =
-        await getGamesUseCase(const PaginatedParam(page: 1, limit: 5));
+    when(() => mockGameRepository.getGames(1, 5)).thenAnswer((_) async => Right(mockGameList));
+    final result = await getGamesUseCase(const PaginatedParam(page: 1, limit: 5));
     expect(result, Right<Failure, List<Game>>(mockGameList));
   });
 
-  test('should return failure when getting games from the repository fails',
-      () async {
+  test('should return failure when getting games from the repository fails', () async {
     final failure = ServerFailure();
-    when(() => mockGameRepository.getGames(1, 5))
-        .thenAnswer((_) async => Left(failure));
-    final result =
-        await getGamesUseCase(const PaginatedParam(page: 1, limit: 5));
+    when(() => mockGameRepository.getGames(1, 5)).thenAnswer((_) async => Left(failure));
+    final result = await getGamesUseCase(const PaginatedParam(page: 1, limit: 5));
     expect(result, Left<Failure, List<Game>>(failure));
   });
 }

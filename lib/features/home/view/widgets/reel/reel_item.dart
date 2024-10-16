@@ -29,8 +29,7 @@ class ReelItem extends StatefulWidget {
   State<ReelItem> createState() => _ReelItemState();
 }
 
-class _ReelItemState extends State<ReelItem>
-    with SingleTickerProviderStateMixin {
+class _ReelItemState extends State<ReelItem> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> curve;
   late VoidCallback isLoadingListener;

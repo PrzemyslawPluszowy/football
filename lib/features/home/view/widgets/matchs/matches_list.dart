@@ -25,9 +25,7 @@ class MatchesList extends StatelessWidget {
             error: (message) => CustomErrorWidget(message: message, height: 90),
             loaded: (games) {
               if (games.isEmpty) {
-                return const NoGamesWidget()
-                    .animate()
-                    .fadeIn(duration: Durations.extralong1);
+                return const NoGamesWidget().animate().fadeIn(duration: Durations.extralong1);
               }
               return ListView.separated(
                 padding: const EdgeInsets.symmetric(horizontal: Sizes.p12),

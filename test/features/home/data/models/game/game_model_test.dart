@@ -25,8 +25,7 @@ import 'package:football/features/home/data/models/game/game_model.dart';
 
 void main() async {
   final file = File('test/features/home/data/models/game/game_response.json');
-  final mockJson =
-      json.decode(await file.readAsString()) as Map<String, dynamic>;
+  final mockJson = json.decode(await file.readAsString()) as Map<String, dynamic>;
 
   final testGameModel = GameModel(
     id: 0,
