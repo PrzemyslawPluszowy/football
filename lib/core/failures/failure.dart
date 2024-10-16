@@ -14,7 +14,7 @@ class NetworkFailure extends Failure with EquatableMixin {
     Talker().warning(e, s);
   }
   @override
-  List<Object?> get props => [e, s];
+  List<Object?> get props => [e];
   @override
   bool? get stringify => true;
 }
@@ -25,7 +25,7 @@ class NotFoundFailure extends Failure with EquatableMixin {
   }
 
   @override
-  List<Object?> get props => [e, s];
+  List<Object?> get props => [e];
 
   @override
   bool? get stringify => true;
@@ -36,7 +36,7 @@ class ServerFailure extends Failure with EquatableMixin {
     Talker().error(e, s);
   }
   @override
-  List<Object?> get props => [e, s];
+  List<Object?> get props => [e];
 
   @override
   bool? get stringify => true;
@@ -48,7 +48,7 @@ class UnknownFailure extends Failure with EquatableMixin {
   }
 
   @override
-  List<Object?> get props => [e, s];
+  List<Object?> get props => [e];
   @override
   bool? get stringify => true;
 }
