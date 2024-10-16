@@ -19,8 +19,11 @@ jobs:
       flutter_channel: 'stable'
       flutter_version: '3.24.0'
       setup: flutter pub run build_runner build --delete-conflicting-outputs
+      
       coverage_excludes: '**/*.g.dart **/*.freezed.dart lib/l10n/* lib/core/failures/failure.dart'
       min_coverage: 70
+      format_line_length: 120
+      
       
     
    
@@ -31,3 +34,5 @@ jobs:
       includes: |
         **/*.md
       modified_files_only: false
+
+      
