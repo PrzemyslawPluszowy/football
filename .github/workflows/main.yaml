@@ -23,6 +23,16 @@ jobs:
       coverage_excludes: '**/*.g.dart **/*.freezed.dart lib/l10n/* lib/core/failures/failure.dart'
       min_coverage: 70
       format_line_length: 120
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Instalacja Fluttera
+        run: flutter pub get
+      - name: Formatowanie kodu
+        run: flutter format --line-length 100 lib test
+      - name: Sprawdzenie czy pliki są sformatowane
+        run: git diff --exit-code
       
       
     
