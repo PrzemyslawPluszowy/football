@@ -50,10 +50,10 @@ class PostsList extends StatelessWidget {
               return PostItem(
                 title: post.title,
                 description: post.description,
-                imageUrl: post.imageUrls.medium.url,
+                imageUrl: post.imageUrls?.medium.url,
                 createdAt: post.createdAt,
-                imageHeight: post.imageUrls.medium.height,
-                imageWidth: post.imageUrls.medium.width,
+                imageHeight: post.imageUrls?.medium.height,
+                imageWidth: post.imageUrls?.medium.width,
               );
             },
           ),

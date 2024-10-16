@@ -1,4 +1,4 @@
-import 'package:football/features/home/data/models/post_images_model.dart';
+import 'package:football/features/home/data/models/posts/post_images_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -19,7 +19,9 @@ class PostModel {
       id: entity.id,
       title: entity.title,
       description: entity.description,
-      imageUrls: PostImagesModel.fromEntity(entity.imageUrls),
+      imageUrls: entity.imageUrls == null
+          ? null
+          : PostImagesModel.fromEntity(entity.imageUrls!),
       createdAt: entity.createdAt,
     );
   }
@@ -30,7 +32,7 @@ class PostModel {
   final int id;
   final String title;
   final String description;
-  final PostImagesModel imageUrls;
+  final PostImagesModel? imageUrls;
   final DateTime createdAt;
 
   Map<String, dynamic> toJson() => _$PostModelToJson(this);
@@ -40,7 +42,7 @@ class PostModel {
       id: id,
       title: title,
       description: description,
-      imageUrls: imageUrls.toEntity(),
+      imageUrls: imageUrls?.toEntity(),
       createdAt: createdAt,
     );
   }

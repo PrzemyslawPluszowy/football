@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:football/features/home/data/models/image_info_model.dart';
+import 'package:football/features/home/data/models/posts/image_info_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 
 void main() {
