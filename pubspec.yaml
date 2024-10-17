@@ -13,6 +13,7 @@ dependencies:
   cached_network_image: ^3.4.1
   dio: ^5.4.1
   equatable: ^2.0.5
+  flick_video_player: ^0.9.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
@@ -34,6 +35,7 @@ dependencies:
   shimmer: ^3.0.0
   talker_dio_logger: ^4.4.1
   talker_flutter: ^4.4.1
+  video_player: ^2.9.2
 
 dev_dependencies:
   auto_route_generator: ^9.0.0
