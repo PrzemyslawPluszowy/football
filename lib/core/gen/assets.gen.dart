@@ -28,9 +28,10 @@ class Assets {
   static const AssetGenImage herbBw = AssetGenImage('assets/herb_bw.png');
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
   static const AssetGenImage noImg = AssetGenImage('assets/no_img.webp');
+  static const AssetGenImage soccer = AssetGenImage('assets/soccer.jpg');
 
   /// List of all assets
-  static List<AssetGenImage> get values => [herb, herbBw, noImg];
+  static List<AssetGenImage> get values => [herb, herbBw, noImg, soccer];
 }
 
 class AssetGenImage {

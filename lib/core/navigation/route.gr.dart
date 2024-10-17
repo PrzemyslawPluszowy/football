@@ -95,7 +95,7 @@ class HomeRouteArgs {
 /// [ReelsScreen]
 class ReelsRoute extends PageRouteInfo<ReelsRouteArgs> {
   ReelsRoute({
-    required List<String> reels,
+    required List<Reel> reels,
     required int selectedId,
     Key? key,
     List<PageRouteInfo>? children,
@@ -131,7 +131,7 @@ class ReelsRouteArgs {
     this.key,
   });
 
-  final List<String> reels;
+  final List<Reel> reels;
 
   final int selectedId;
 

@@ -1,4 +1,4 @@
-import 'package:football/features/home/data/models/posts/image_info_model.dart';
+import 'package:football/features/home/data/models/image_info_model.dart';
 import 'package:football/features/home/domain/entities/post_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
