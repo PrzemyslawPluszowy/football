@@ -37,7 +37,7 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: ^9.0.0
-  build_runner: ^2.4.12
+  build_runner: ^2.4.13
   flutter_gen_runner: ^5.7.0
   flutter_test:
     sdk: flutter
