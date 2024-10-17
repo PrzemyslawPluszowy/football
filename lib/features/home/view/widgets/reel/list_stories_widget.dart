@@ -38,6 +38,7 @@ class ListStoriesWidget extends StatelessWidget {
             });
           },
           child: ReelItem(
+            id: reel.id,
             isLoading: isLoading,
             title: reel.title,
             imageUrl: reel.imageUrls?.medium.url ?? '',
