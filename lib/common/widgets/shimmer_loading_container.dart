@@ -8,13 +8,18 @@ class ShimmerLoadingContainer extends StatelessWidget {
   const ShimmerLoadingContainer({
     super.key,
     this.height = 150,
+    this.margin = Sizes.p12,
+    this.width = double.infinity,
   });
 
   final double height;
+  final double width;
+  final double margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -24,7 +29,7 @@ class ShimmerLoadingContainer extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(Sizes.p12),
       ),
-      margin: const EdgeInsets.symmetric(horizontal: Sizes.p12),
+      margin: EdgeInsets.symmetric(horizontal: margin),
       height: height,
       child: Center(
         child: Text('Loading'.hardcoded),

@@ -1,9 +1,12 @@
+// ignore_for_file: one_member_abstracts
+
 import 'package:football/core/failures/failure.dart';
 import 'package:fpdart/fpdart.dart';
 
-// ignore: one_member_abstracts
 abstract class UseCase<Data, Param> {
   Future<Either<Failure, Data>> call(Param param);
 }
 
-class NoParams {}
+abstract class UseCaseNoParam<Data> {
+  Future<Either<Failure, Data>> call();
+}

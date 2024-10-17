@@ -31,7 +31,6 @@ void main() {
 
   test('should convert from model to json', () {
     final result = testGameModel.toJson();
-
     expect(result, mockJson);
   });
 

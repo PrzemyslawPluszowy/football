@@ -10,6 +10,7 @@ import 'package:football/features/home/view/widgets/matchs/cubit/games_cubit.dar
 import 'package:football/features/home/view/widgets/matchs/matches_list.dart';
 import 'package:football/features/home/view/widgets/post/cubit/post_list_cubit.dart';
 import 'package:football/features/home/view/widgets/post/posts_list.dart';
+import 'package:football/features/home/view/widgets/reel/cubit/reels_cubit.dart';
 import 'package:football/features/home/view/widgets/reel/reels_list.dart';
 
 @RoutePage()
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
   Future<void> _onRefresh(BuildContext context) async {
     await context.read<PostListCubit>().refreshPosts();
     if (context.mounted) await context.read<GamesCubit>().getGames();
+    if (context.mounted) await context.read<ReelsCubit>().getReels();
   }
 
   @override
