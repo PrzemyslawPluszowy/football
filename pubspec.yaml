@@ -18,6 +18,7 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.5.0
   flutter_bloc: ^8.1.6
+  flutter_launcher_icons: ^0.14.1
   flutter_localizations:
     sdk: flutter
   fpdart: ^1.1.0
@@ -66,3 +67,9 @@ flutter_gen:
     flare_flutter: true
     rive: true
     lottie: true
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/herb.png"
+  min_sdk_android: 24
