@@ -41,7 +41,7 @@ class ListStoriesWidget extends StatelessWidget {
             id: reel.id,
             isLoading: isLoading,
             title: reel.title,
-            imageUrl: reel.imageUrls?.medium.url ?? '',
+            imageUrl: reel.imageUrls.medium.url,
             description: reel.description ?? '',
           ),
         );

@@ -25,7 +25,7 @@ void main() {
       expect(result.title, 'string');
       expect(result.description, 'string');
       expect(result.imageUrls, isA<PostImagesModel?>());
-      expect(result.videoUrls, isA<VideoUrlsModel>());
+      expect(result.videoUrl, 'string');
       expect(result.createdAt, DateTime.parse('2024-09-14T17:15:07.000000Z'));
     });
 
@@ -37,7 +37,7 @@ void main() {
       expect(result.title, 'string');
       expect(result.description, 'string');
       expect(result.imageUrls, isA<PostImages>());
-      expect(result.videoUrls, isA<VideoUrls>());
+      expect(result.videoUrl, 'string');
       expect(result.createdAt, DateTime.parse('2024-09-14T17:15:07.000000Z'));
     });
 
@@ -49,7 +49,7 @@ void main() {
       expect(result['title'], mockJson['title']);
       expect(result['description'], mockJson['description']);
       expect(result['image_urls'], mockJson['image_urls']);
-      expect(result['video_urls'], mockJson['video_urls']);
+      expect(result['video_url'], mockJson['video_url']);
 
       // Normalizacja formatu daty
       expect(

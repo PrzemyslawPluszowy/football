@@ -53,7 +53,7 @@ class ReelPlayerState extends State<ReelPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    final isVideo = widget.reel.videoUrls != null;
+    final isVideo = widget.reel.videoUrl != null;
 
     return Stack(
       fit: StackFit.expand,
@@ -105,7 +105,7 @@ class ReelPlayerState extends State<ReelPlayer> {
 
   Widget _buildImage() {
     return CashedImage(
-      imageUrl: widget.reel.imageUrls?.large.url ?? '',
+      imageUrl: widget.reel.imageUrls.large.url,
       width: MediaQuery.of(context).size.width.toInt(),
       height: MediaQuery.of(context).size.height.toInt(),
     );

@@ -10,14 +10,7 @@ class Reel with _$Reel {
     required String title,
     required String? description,
     required DateTime createdAt,
-    required VideoUrls? videoUrls,
-    PostImages? imageUrls,
+    required String? videoUrl,
+    required PostImages imageUrls,
   }) = _ReelEntity;
-}
-
-@freezed
-class VideoUrls with _$VideoUrls {
-  const factory VideoUrls({
-    required String small,
-  }) = _VideoUrls;
 }

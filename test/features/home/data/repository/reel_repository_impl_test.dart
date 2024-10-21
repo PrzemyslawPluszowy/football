@@ -21,7 +21,7 @@ final mockListReel = [
       medium: ImageInfoModel(url: '', width: 100, height: 100),
       small: ImageInfoModel(url: '', width: 100, height: 100),
     ),
-    videoUrls: VideoUrlsModel(small: 'url'),
+    videoUrl: 'videoUrls',
   ),
 ];
 void main() {
