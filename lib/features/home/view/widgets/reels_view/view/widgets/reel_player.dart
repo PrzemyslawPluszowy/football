@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:football/common/widgets/cashed_image.dart';
+import 'package:football/core/extensions/context_text_theme.dart';
+import 'package:football/core/extensions/string_hc.dart';
+import 'package:football/core/theme/app_sizes.dart';
 import 'package:football/features/home/domain/entities/reeel_entity.dart';
 import 'package:football/features/home/view/widgets/reels_view/view/widgets/close_button_overlay.dart';
 import 'package:football/features/home/view/widgets/reels_view/view/widgets/reel_description.dart';
@@ -28,11 +31,14 @@ class ReelPlayerState extends State<ReelPlayer> {
   @override
   void initState() {
     super.initState();
+    if (widget.reel.videoUrl == null) {
+      return;
+    }
     flickManager = FlickManager(
       onVideoEnd: _onVideoEnd,
       videoPlayerController: VideoPlayerController.networkUrl(
         Uri.parse(
-          'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          widget.reel.videoUrl!,
         ),
       ),
     );
@@ -47,7 +53,7 @@ class ReelPlayerState extends State<ReelPlayer> {
 
   @override
   void dispose() {
-    flickManager.dispose();
+    if (widget.reel.videoUrl != null) flickManager.dispose();
     super.dispose();
   }
 
@@ -66,40 +72,64 @@ class ReelPlayerState extends State<ReelPlayer> {
   }
 
   Widget _buildVideoPlayer() {
-    return FlickVideoPlayer(
-      systemUIOverlayFullscreen: const [
-        SystemUiOverlay.bottom,
-        SystemUiOverlay.top,
-      ],
-      systemUIOverlay: const [
-        SystemUiOverlay.bottom,
-      ],
-      flickVideoWithControlsFullscreen: const SizedBox(),
-      flickManager: flickManager,
-      flickVideoWithControls: FlickVideoWithControls(
-        controls: const FlickPortraitControls(), // Domyślne kontrolki
-        playerLoadingFallback: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.zero,
-            color: Colors.black,
-          ),
-          width: double.infinity,
-          height: double.infinity,
-        ).animate(
-          onPlay: (controller) {
-            controller.repeat();
-          },
-        ).shimmer(
-          angle: 15,
-          stops: const [0.0, 0.5, 1.0],
-          colors: [
-            Colors.black,
-            Colors.grey[900]!,
-            Colors.black,
+    return ValueListenableBuilder(
+      valueListenable: flickManager.flickVideoManager!.videoPlayerController!,
+      builder: (context, VideoPlayerValue value, child) {
+        if (value.hasError) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error, color: Colors.red, size: Sizes.p48),
+                gapH12,
+                Text(
+                  'Nie udało się załadować filmu.'.hardcoded,
+                  style: context.textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        // Standardowy odtwarzacz wideo z fallbackiem ładowania
+        return FlickVideoPlayer(
+          systemUIOverlayFullscreen: const [
+            SystemUiOverlay.bottom,
+            SystemUiOverlay.top,
           ],
-          duration: const Duration(seconds: 2),
-        ),
-      ),
+          systemUIOverlay: const [
+            SystemUiOverlay.bottom,
+          ],
+          flickVideoWithControlsFullscreen: const SizedBox(),
+          flickManager: flickManager,
+          flickVideoWithControls: FlickVideoWithControls(
+            controls: const FlickPortraitControls(), // Domyślne kontrolki
+            playerLoadingFallback: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.zero,
+                color: Colors.black,
+              ),
+              width: double.infinity,
+              height: double.infinity,
+            ).animate(
+              onPlay: (controller) {
+                controller.repeat();
+              },
+            ).shimmer(
+              angle: 15,
+              stops: const [0.0, 0.5, 1.0],
+              colors: [
+                Colors.black,
+                Colors.grey[900]!,
+                Colors.black,
+              ],
+              duration: const Duration(seconds: 2),
+            ),
+          ),
+        );
+      },
     );
   }
 
