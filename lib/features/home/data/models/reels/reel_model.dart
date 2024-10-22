@@ -11,9 +11,9 @@ class ReelModel {
     required this.id,
     required this.title,
     required this.createdAt,
+    required this.imageUrls,
     this.description,
-    this.imageUrls,
-    this.videoUrls,
+    this.videoUrl,
   });
 
   factory ReelModel.fromJson(Map<String, dynamic> json) =>
@@ -22,8 +22,8 @@ class ReelModel {
   final int id;
   final String title;
   final String? description;
-  final PostImagesModel? imageUrls;
-  final VideoUrlsModel? videoUrls;
+  final PostImagesModel imageUrls;
+  final String? videoUrl;
   @DataTimaIsoConverter()
   final DateTime createdAt;
 
@@ -32,63 +32,11 @@ class ReelModel {
       id: id,
       title: title,
       description: description,
-      imageUrls: imageUrls?.toEntity(),
-      videoUrls: videoUrls == null ? null : VideoUrls(small: videoUrls!.small),
+      imageUrls: imageUrls.toEntity(),
+      videoUrl: videoUrl,
       createdAt: createdAt,
     );
   }
 
   Map<String, dynamic> toJson() => _$ReelModelToJson(this);
 }
-
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class VideoUrlsModel {
-  VideoUrlsModel({
-    required this.small,
-  });
-
-  factory VideoUrlsModel.fromJson(Map<String, dynamic> json) =>
-      _$VideoUrlsModelFromJson(json);
-
-  final String small;
-
-  VideoUrls toEntity() {
-    return VideoUrls(
-      small: small,
-    );
-  }
-
-  Map<String, dynamic> toJson() => _$VideoUrlsModelToJson(this);
-}
-
-
-
-
-// [
-//   {
-//     "id": 0,
-//     "title": "string",
-//     "description": "string",
-//     "image_urls": {
-//       "large": {
-//         "url": "http://localhost/storage/1/conversions/puchar_historia_512-large.webp",
-//         "width": 500,
-//         "height": 500
-//       },
-//       "medium": {
-//         "url": "http://localhost/storage/1/conversions/puchar_historia_512-medium.webp",
-//         "width": 300,
-//         "height": 300
-//       },
-//       "small": {
-//         "url": "http://localhost/storage/1/conversions/puchar_historia_512-small.webp",
-//         "width": 150,
-//         "height": 150
-//       }
-//     },
-//     "video_urls": {
-//       "small": "http://localhost/storage/5/small.webm"
-//     },
-//     "created_at": "2024-09-14T17:15:07.000000Z"
-//   }
-// ]

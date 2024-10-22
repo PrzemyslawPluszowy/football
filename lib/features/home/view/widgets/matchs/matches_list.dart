@@ -16,7 +16,7 @@ class MatchesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 140,
       child: BlocBuilder<GamesCubit, GamesState>(
         builder: (context, state) {
           return state.when(
@@ -37,6 +37,7 @@ class MatchesList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final game = games[index];
                   return FutureMatchItem(
+                    result: game.score,
                     firstFootballTeam: game.homeClub.name,
                     secondFootballTeam: game.awayClub.name,
                     matchTime: game.date,

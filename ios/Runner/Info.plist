@@ -7,6 +7,19 @@
 		<string>en</string>
 		<string>es</string>
 	</array>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>217.182.75.14</key>
+        <dict>
+            <key>NSExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+            <key>NSIncludesSubdomains</key>
+            <true/>
+        </dict>
+    </dict>
+</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

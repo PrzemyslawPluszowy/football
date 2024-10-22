@@ -12,6 +12,7 @@ class MainAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

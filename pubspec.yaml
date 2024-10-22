@@ -13,16 +13,19 @@ dependencies:
   cached_network_image: ^3.4.1
   dio: ^5.4.1
   equatable: ^2.0.5
+  flick_video_player: ^0.9.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
   flutter_bloc: ^8.1.6
+  flutter_launcher_icons: ^0.14.1
   flutter_localizations:
     sdk: flutter
   fpdart: ^1.1.0
   freezed_annotation: ^2.4.1
   get_it: ^8.0.0
   google_fonts: ^6.2.1
+  http: ^1.2.2
   intl: ^0.19.0
   ionicons: ^0.2.2
   json_annotation: ^4.9.0
@@ -34,6 +37,7 @@ dependencies:
   shimmer: ^3.0.0
   talker_dio_logger: ^4.4.1
   talker_flutter: ^4.4.1
+  video_player: ^2.9.2
 
 dev_dependencies:
   auto_route_generator: ^9.0.0
@@ -63,3 +67,9 @@ flutter_gen:
     flare_flutter: true
     rive: true
     lottie: true
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/herb.png"
+  min_sdk_android: 24

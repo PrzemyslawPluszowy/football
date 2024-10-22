@@ -20,7 +20,7 @@ final mockListReel = [
       medium: ImageInfo(url: '', width: 100, height: 100),
       small: ImageInfo(url: '', width: 100, height: 100),
     ),
-    videoUrls: const VideoUrls(small: 'url'),
+    videoUrl: 'videoUrls',
   ),
 ];
 void main() {

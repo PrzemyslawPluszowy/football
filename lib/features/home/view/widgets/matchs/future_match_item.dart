@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:football/core/extensions/context_text_theme.dart';
-import 'package:football/core/extensions/string_hc.dart';
 import 'package:football/core/theme/app_sizes.dart';
 import 'package:football/core/theme/custom_colors.dart';
 import 'package:intl/intl.dart';
@@ -12,11 +11,13 @@ class FutureMatchItem extends StatelessWidget {
     required this.secondFootballTeam,
     required this.matchTime,
     required this.stadium,
+    this.result,
     super.key,
   });
 
   final String firstFootballTeam;
   final String secondFootballTeam;
+  final String? result;
   final DateTime matchTime;
   final String stadium;
 
@@ -29,10 +30,11 @@ class FutureMatchItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(Sizes.p12),
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: Sizes.p8,
-            height: 150,
+            height: 160,
             decoration: BoxDecoration(
               color: context.customColors!.primary,
               borderRadius: const BorderRadius.only(
@@ -43,15 +45,57 @@ class FutureMatchItem extends StatelessWidget {
           ),
           gapW12,
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '$firstFootballTeam vs $secondFootballTeam'.hardcoded,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: context.customColors?.text,
-                ),
+              gapH4,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 140 - Sizes.p8 / 2 - Sizes.p12,
+                    child: Text(
+                      firstFootballTeam,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        color: context.customColors?.text,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'vs',
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        color: context.customColors?.text,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 140 - Sizes.p8 / 2 - Sizes.p12,
+                    child: Text(
+                      textAlign: TextAlign.end,
+                      secondFootballTeam,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        color: context.customColors?.text,
+                      ),
+                    ),
+                  ),
+                  gapW12,
+                ],
               ),
+              if (result != null) ...[
+                SizedBox(
+                  width: 300 - Sizes.p8 - Sizes.p12 * 2,
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    result!,
+                    style: context.textTheme.headlineSmall?.copyWith(
+                      color: context.customColors?.text,
+                    ),
+                  ),
+                ),
+              ],
               gapH4,
               Text(
                 stadium,
@@ -66,6 +110,7 @@ class FutureMatchItem extends StatelessWidget {
                   color: context.customColors?.text,
                 ),
               ),
+              gapH8,
             ],
           ),
         ],

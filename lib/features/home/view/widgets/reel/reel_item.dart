@@ -13,9 +13,10 @@ class ReelItem extends StatefulWidget {
     required this.imageUrl,
     required this.description,
     required this.isLoading,
+    required this.id,
     super.key,
   });
-
+  final int id;
   final String title;
   final String imageUrl;
   final String description;
@@ -44,7 +45,7 @@ class _ReelItemState extends State<ReelItem>
 
   void initAnimation() {
     controller = AnimationController(
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
     curve = Tween<double>(begin: 0, end: 2 * pi).animate(controller);
@@ -140,11 +141,14 @@ class _ReelItemState extends State<ReelItem>
   }
 
   Widget _buildImage() {
-    return CashedImage(
-      width: ReelItem.width,
-      height: ReelItem.height,
-      imageUrl: widget.imageUrl,
-      borderRadius: BorderRadius.circular(Sizes.p8),
+    return Hero(
+      tag: widget.id,
+      child: CashedImage(
+        width: ReelItem.width,
+        height: ReelItem.height,
+        imageUrl: widget.imageUrl,
+        borderRadius: BorderRadius.circular(Sizes.p8),
+      ),
     );
   }
 

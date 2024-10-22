@@ -1,0 +1,10 @@
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true"/>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">www.sample-videos.com</domain>
+        <domain includeSubdomains="true">217.182.75.14</domain>
+        <domain includeSubdomains="true">test.bombox.org</domain>
+        <domain includeSubdomains="true">flutter.github.io</domain>
+    </domain-config>
+</network-security-config>
+
