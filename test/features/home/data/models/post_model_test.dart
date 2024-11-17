@@ -10,7 +10,7 @@ final mockJson = {
   'id': 1,
   'title': 'title',
   'description': 'description',
-  'image_urls': {
+  'primary_image': {
     'large': {
       'url': '',
       'width': 100,
@@ -34,7 +34,7 @@ void main() {
     id: 1,
     title: 'title',
     description: 'description',
-    imageUrls: const PostImagesModel(
+    primaryImage: const PostImagesModel(
       large: ImageInfoModel(url: '', width: 100, height: 100),
       medium: ImageInfoModel(url: '', width: 100, height: 100),
       small: ImageInfoModel(url: '', width: 100, height: 100),
@@ -82,7 +82,7 @@ void main() {
     expect(postModel.id, 1);
     expect(postModel.title, 'title');
     expect(postModel.description, 'description');
-    expect(postModel.imageUrls!.large.width, 100);
+    expect(postModel.primaryImage!.large.width, 100);
     expect(postModel.createdAt.year, 2024);
   });
 
@@ -92,7 +92,7 @@ void main() {
       id: 1,
       title: 'title',
       description: 'description',
-      imageUrls: const PostImagesModel(
+      primaryImage: const PostImagesModel(
         large: ImageInfoModel(url: '', width: 100, height: 100),
         medium: ImageInfoModel(url: '', width: 100, height: 100),
         small: ImageInfoModel(url: '', width: 100, height: 100),
@@ -107,7 +107,7 @@ void main() {
     expect(json['id'], 1);
     expect(json['title'], 'title');
     expect(json['description'], 'description');
-    expect(json['image_urls']['large']['width'], 100);
+    expect(json['primary_image']['large']['width'], 100);
     expect(json['created_at'], '2024-01-01T00:00:00.000');
   });
 
@@ -120,7 +120,7 @@ void main() {
     expect(postModel.id, 1);
     expect(postModel.title, 'title');
     expect(postModel.description, 'description');
-    expect(postModel.imageUrls!.large.width, 100);
+    expect(postModel.primaryImage!.large.width, 100);
     expect(postModel.createdAt.year, 2024);
   });
 
@@ -154,9 +154,9 @@ void main() {
     expect(json['title'], 'title');
     expect(json['description'], 'description');
 
-    expect(json['image_urls'], isA<Map<String, dynamic>>());
+    expect(json['primary_image'], isA<Map<String, dynamic>>());
 
-    expect(json['image_urls'], testPostMode.imageUrls!.toJson());
+    expect(json['primary_image'], testPostMode.primaryImage!.toJson());
 
     expect(json['created_at'], '2024-01-01T00:00:00.000');
   });

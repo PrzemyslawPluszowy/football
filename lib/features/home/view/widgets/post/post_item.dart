@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_quill/flutter_quill.dart' as quill;
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:football/common/widgets/cashed_image.dart';
 import 'package:football/core/theme/app_sizes.dart';
 import 'package:football/core/theme/custom_colors.dart';
@@ -7,7 +11,7 @@ import 'package:football/features/home/view/widgets/post/content_container.dart'
 import 'package:football/features/home/view/widgets/post/share_container.dart';
 
 class PostItem extends StatelessWidget {
-  const PostItem({
+  PostItem({
     required this.imageHeight,
     required this.imageWidth,
     required this.createdAt,
@@ -34,6 +38,33 @@ class PostItem extends StatelessWidget {
     return imageHeight >= imageWidth ? 500 : 300;
   }
 
+  final QuillController _controller = QuillController.basic();
+
+  String _buildRichTextFromDelta(String description) {
+    try {
+      final delta = jsonDecode(description) as Map<String, dynamic>;
+
+      // Sprawdzenie, czy ostatni element `ops` zawiera `\n`
+      final ops = delta['ops'] as List;
+      if (ops.isNotEmpty) {
+        final lastOp = ops.last;
+        if (lastOp is Map &&
+            lastOp['insert'] is String &&
+            !(lastOp['insert'] as String).endsWith('\n')) {
+          // Dodanie znaku nowej linii na końcu
+          ops.add({'insert': '\n'});
+        }
+      }
+
+      final doc = quill.Document.fromJson(ops);
+      _controller.document = doc;
+      return _controller.document.toPlainText();
+    } catch (e) {
+      debugPrint('Error while parsing delta: $e');
+      return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +86,7 @@ class PostItem extends StatelessWidget {
                   child: ContentContainer(
                     videoUrl: videoUrl,
                     title: title,
-                    description: description,
+                    description: _buildRichTextFromDelta(description),
                   ),
                 ),
               ],

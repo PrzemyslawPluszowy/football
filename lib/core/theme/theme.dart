@@ -20,7 +20,7 @@ class AppTheme {
   static final ThemeData dark = ThemeData(
     textTheme: GoogleFonts.oswaldTextTheme(),
     scaffoldBackgroundColor: CustomColors.dark.background,
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.teal,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     bottomNavigationBarTheme: bootomNavigationBar,
     appBarTheme: appBar,

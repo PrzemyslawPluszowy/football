@@ -10,7 +10,7 @@ class PostModel {
     required this.id,
     required this.title,
     required this.description,
-    required this.imageUrls,
+    required this.primaryImage,
     required this.createdAt,
   });
 
@@ -19,7 +19,7 @@ class PostModel {
       id: entity.id,
       title: entity.title,
       description: entity.description,
-      imageUrls: entity.imageUrls == null
+      primaryImage: entity.imageUrls == null
           ? null
           : PostImagesModel.fromEntity(entity.imageUrls!),
       createdAt: entity.createdAt,
@@ -32,7 +32,7 @@ class PostModel {
   final int id;
   final String title;
   final String description;
-  final PostImagesModel? imageUrls;
+  final PostImagesModel? primaryImage;
   final DateTime createdAt;
 
   Map<String, dynamic> toJson() => _$PostModelToJson(this);
@@ -42,7 +42,7 @@ class PostModel {
       id: id,
       title: title,
       description: description,
-      imageUrls: imageUrls?.toEntity(),
+      imageUrls: primaryImage?.toEntity(),
       createdAt: createdAt,
     );
   }

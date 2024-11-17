@@ -22,7 +22,7 @@ GetIt getIt = GetIt.instance;
 void setupLocator() {
   final dio = Dio(
     BaseOptions(
-      baseUrl: 'http://217.182.75.14/api',
+      baseUrl: 'https://club-fan.pl/api/',
     ),
   );
   dio.interceptors.add(
